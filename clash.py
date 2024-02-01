@@ -1,5 +1,6 @@
 from util import *
 import time
+from datetime import datetime, timezone
 
 username = sys.argv[1] # 登录账号
 password = sys.argv[2] # 登录密码
@@ -7,6 +8,11 @@ password = sys.argv[2] # 登录密码
 @retry(stop_max_attempt_number=5)
 def clash():
     try:
+        #打印时间
+        current_time = datetime.now()
+        print("Current time:", current_time)
+        print("Time zone:", current_time.astimezone().tzinfo)
+        
         driver = get_web_driver()
         driver.get("https://ikuuu.me/auth/login")
         driver.find_element_by_xpath("//*[@id='email']").send_keys(username)
