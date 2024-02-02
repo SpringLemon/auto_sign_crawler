@@ -30,7 +30,7 @@ def clash():
             print("Element is disabled, skipping click.明日再来")
         
         # driver.find_element_by_xpath("//*[@class='btn btn-icon icon-left btn-primary']").click()
-    except:
+    except Exception as e:
         print(f"An error occurred: {str(e)}")
         raise
     finally:
