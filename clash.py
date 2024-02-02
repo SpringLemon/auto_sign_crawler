@@ -31,6 +31,7 @@ def clash():
         
         # driver.find_element_by_xpath("//*[@class='btn btn-icon icon-left btn-primary']").click()
     except:
+        print(f"An error occurred: {str(e)}")
         raise
     finally:
         driver.quit()
