@@ -23,6 +23,7 @@ def clash():
         
         if "disabled" not in element.get_attribute("class"):
             # 如果不包含 "disabled" 类，则触发点击操作
+            print("Element is disabled, skipping click.调度成功")
             element.click()
         else:
             # 如果包含 "disabled" 类，则只打印日志
