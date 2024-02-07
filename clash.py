@@ -1,13 +1,15 @@
+import sys
 from util import *
 import time
 from datetime import datetime, timezone
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException, TimeoutException  # 添加 TimeoutException 导入
 
 username = sys.argv[1] # 登录账号
 password = sys.argv[2] # 登录密码
 
 @retry(stop_max_attempt_number=5)
 def clash():
+    driver = None
     try:
         #打印时间
         current_time = datetime.now()
@@ -33,14 +35,14 @@ def clash():
             # 等待一段时间，确保点击操作完成
             time.sleep(2)
             print("点击成功")
-        # driver.find_element_by_xpath("//*[@class='btn btn-icon icon-left btn-primary']").click()
     except TimeoutException as e:
-        print("等待超时，无法找到可点击元素。 {str(e)}")
+        print(f"等待超时，无法找到可点击元素。 {str(e)}")
     except Exception as e:
         print(f"出现额外的异常，An error occurred: {str(e)}")
         raise
     finally:
-        driver.quit()
+        if driver:
+            driver.quit()
 
 if __name__ == '__main__':
     clash()
