@@ -21,10 +21,8 @@ def clash():
         driver.find_element_by_xpath("//*[@id='email']").send_keys(username)
         driver.find_element_by_xpath("//*[@id='password']").send_keys(password)
         driver.find_element_by_xpath("//*[@class='btn btn-primary btn-lg btn-block login']").click()
-        time.sleep(1)
-        clickable_element = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, "//*[@class='btn btn-icon icon-left btn-primary']"))
-        )
+        time.sleep(10)
+        clickable_elements = driver.find_elements(By.XPATH, "//*[@class='btn btn-icon icon-left btn-primary']")
         try:
             disabled_element = driver.find_element(By.XPATH, "//*[@class='btn btn-icon disabled icon-left btn-primary']")
             print("已经签到过了，无需再次签到。")
@@ -33,7 +31,7 @@ def clash():
             driver.execute_script("arguments[0].click();", clickable_element)
             #clickable_element.click()
             # 等待一段时间，确保点击操作完成
-            time.sleep(2)
+            time.sleep(5)
             print("点击成功")
     except TimeoutException as e:
         print(f"等待超时，无法找到可点击元素。 {str(e)}")
