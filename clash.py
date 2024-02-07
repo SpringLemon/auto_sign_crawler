@@ -34,7 +34,6 @@ def clash():
             time.sleep(2)
             print("点击成功")
         # driver.find_element_by_xpath("//*[@class='btn btn-icon icon-left btn-primary']").click()
-    User
     except TimeoutException as e:
         print("等待超时，无法找到可点击元素。 {str(e)}")
     except Exception as e:
