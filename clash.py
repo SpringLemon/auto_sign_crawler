@@ -28,7 +28,7 @@ def clash():
             print("已经签到过了，无需再次签到。")
         except NoSuchElementException:
             print("可以点击，尝试点击")
-            driver.execute_script("arguments[0].click();", clickable_elements)
+            driver.execute_script("arguments[0].click();", clickable_elements[0])
             #clickable_element.click()
             # 等待一段时间，确保点击操作完成
             time.sleep(5)
